@@ -1,0 +1,36 @@
+# Dependencies and package manager cache
+node_modules/
+.pnpm-store/
+
+# Next.js and generated build output
+.next/
+out/
+build/
+dist/
+next-env.d.ts
+*.tsbuildinfo
+
+# Local environment variables (keep the example template)
+.env*
+!.env.example
+
+# Logs and tool caches
+*.log
+.eslintcache
+.cache/
+
+# Test artifacts
+coverage/
+playwright-report/
+test-results/
+
+# Local deployment metadata
+.vercel/
+
+# Editor and operating system artifacts
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
