@@ -12,7 +12,7 @@ export const profile = {
       "I'm a Fullstack Engineer focused on building reliable, high-performance software with TypeScript, React and Node.js.",
       "Over the last 6+ years I've worked across frontend architecture, backend systems, databases and cloud infrastructure, often on products where performance, scalability or reliability are part of the actual problem.",
       "I enjoy understanding how systems work underneath the abstraction: why an API is slow, why a UI struggles with large datasets, why a deployment pipeline creates friction, or how an architecture can be simplified.",
-      "Outside of enterprise software, I'm learning game development and building my own projects.",
+      "Outside of enterprise software, I'm exploring game development and building my own projects.",
       "I like building things.",
     ],
   },

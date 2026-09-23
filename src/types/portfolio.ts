@@ -18,13 +18,29 @@ export type Experience = {
   stack: readonly string[];
 };
 
-export type ProjectId = "tailor-pricing" | "interactive-portfolio" | "timeless-island";
+export type ProjectStatus = "active" | "completed" | "on-hold";
 export type Project = {
-  id: ProjectId;
+  id: string;
   title: string;
-  status: "Active personal project" | "In development";
+  status: ProjectStatus;
   description: string;
   stack: readonly string[];
+  links?: { live?: string; github?: string };
+};
+
+export type GameProjectStage = "concept" | "pre-production" | "prototype" | "production";
+export type GameProjectStatus = "active" | "on-hold" | "completed";
+export type GameProject = {
+  id: string;
+  title: string;
+  category: "Game Design";
+  stage: GameProjectStage;
+  status: GameProjectStatus;
+  description: string;
+  details: string;
+  completedDesignWork: readonly string[];
+  notImplemented: readonly string[];
+  plannedStack: readonly string[];
 };
 
 export type SkillCategory = {
@@ -36,8 +52,8 @@ export type Achievement = { id: string; title: string };
 export type GameDevelopment = {
   heading: string;
   paragraphs: readonly string[];
-  featuredProjectId: ProjectId;
+  projects: readonly GameProject[];
 };
 
-export type SectionId = "about" | "experience" | "projects" | "skills" | "game-development" | "achievements" | "contact";
+export type SectionId = "about" | "experience" | "projects" | "skills" | "game-lab" | "achievements" | "contact";
 export type PortfolioSection = { id: SectionId; title: string };

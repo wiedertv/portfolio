@@ -1,5 +1,6 @@
 import * as Phaser from "phaser";
-import { COLORS, LOCATIONS, WORLD } from "@/game/constants/gameConstants";
+import { COLORS, WORLD } from "@/game/constants/gameConstants";
+import { BUILDINGS, QUEST_BOARD } from "@/game/constants/worldLocations";
 
 export function createPlaceholderWorld(scene: Phaser.Scene) {
   const art = scene.add.graphics();
@@ -13,7 +14,7 @@ export function createPlaceholderWorld(scene: Phaser.Scene) {
   }
   art.fillStyle(COLORS.pathEdge).fillRoundedRect(359, 540, 882, 124, 24);
   art.fillStyle(COLORS.path).fillRoundedRect(365, 546, 870, 112, 20);
-  for (const location of LOCATIONS) {
+  for (const location of BUILDINGS) {
     const top = Math.min(location.y, 600);
     art.fillStyle(COLORS.path).fillRect(location.x - 30, top, 60, Math.abs(location.y - 600));
     art.fillStyle(COLORS.navy, 0.16).fillRect(location.x - 94, location.y - 52, 200, 136);
@@ -27,11 +28,12 @@ export function createPlaceholderWorld(scene: Phaser.Scene) {
       backgroundColor: "#f8efd9", padding: { x: 12, y: 6 },
     }).setOrigin(0.5);
   }
-  art.fillStyle(COLORS.path).fillCircle(800, 600, 132);
-  art.fillStyle(COLORS.brown).fillRect(743, 545, 10, 100).fillRect(847, 545, 10, 100);
-  art.fillStyle(COLORS.navy).fillRect(728, 532, 144, 76);
-  art.fillStyle(COLORS.cream).fillRect(741, 545, 118, 48);
-  scene.add.text(800, 569, "QUEST BOARD", {
+  const { x, y } = QUEST_BOARD;
+  art.fillStyle(COLORS.path).fillCircle(x, y, 132);
+  art.fillStyle(COLORS.brown).fillRect(x - 57, y - 55, 10, 100).fillRect(x + 47, y - 55, 10, 100);
+  art.fillStyle(COLORS.navy).fillRect(x - 72, y - 68, 144, 76);
+  art.fillStyle(COLORS.cream).fillRect(x - 59, y - 55, 118, 48);
+  scene.add.text(x, y - 31, QUEST_BOARD.label.toUpperCase(), {
     fontFamily: "monospace", fontSize: "14px", color: "#28394a",
   }).setOrigin(0.5);
 }

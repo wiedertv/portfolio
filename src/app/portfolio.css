@@ -157,3 +157,16 @@
   .close-button { min-height: 44px; gap: 9px; }
   .portfolio-page-link { display: inline-flex; align-items: center; min-height: 44px; }
 }
+
+.project-links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; }
+.project-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.project-status[data-status="on-hold"] > span { background: var(--brown); }
+.game-project-state { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 18px 0 22px; }
+.game-project-state li { border: 1px solid #adb79b; border-radius: 3px; padding: 6px 9px; font: 10px/1.5 monospace; text-transform: uppercase; letter-spacing: .4px; }
+.design-work { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; padding-block: 20px; margin-block: 20px; border-block: 1px solid #c6cdb4; }
+.game-project .design-work h4,
+.game-project .design-work h5,
+.game-project .planned-stack-heading { font: 600 13px/1.5 Arial, Helvetica, sans-serif; margin: 0 0 12px; }
+.design-work ul { list-style: square; padding-left: 17px; margin: 0; font-size: 12px; line-height: 1.8; color: var(--portfolio-muted); }
+.design-work li { margin-bottom: 5px; }
+@media (max-width: 700px) { .design-work { grid-template-columns: 1fr; } }

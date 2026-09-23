@@ -2,9 +2,17 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import type { SectionId } from "@/types/portfolio";
 import { PortfolioContent } from "./PortfolioContent";
 
-export function QuickPortfolio({ open, onClose }: { open: boolean; onClose: () => void }) {
+function focusSection(root: HTMLDialogElement, id: string) {
+  const section = root.querySelector<HTMLElement>(`#${id}`);
+  if (!section) return;
+  section.scrollIntoView({ block: "start" });
+  section.querySelector<HTMLElement>("[tabindex]")?.focus({ preventScroll: true });
+}
+
+export function QuickPortfolio({ open, initialSection, onClose }: { open: boolean; initialSection?: SectionId; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -14,12 +22,14 @@ export function QuickPortfolio({ open, onClose }: { open: boolean; onClose: () =
     const previousOverflow = document.body.style.overflow;
     element.showModal();
     document.body.style.overflow = "hidden";
+    if (initialSection) focusSection(element, initialSection);
+    else element.scrollTop = 0;
     return () => {
       element.close();
       document.body.style.overflow = previousOverflow;
-      if (previousFocus instanceof HTMLElement) previousFocus.focus();
+      if (previousFocus instanceof HTMLElement) previousFocus.focus({ preventScroll: true });
     };
-  }, [open]);
+  }, [open, initialSection]);
 
   return (
     <dialog ref={dialog} className="portfolio-dialog" aria-labelledby="portfolio-title" onCancel={onClose} onClick={(event) => {
@@ -30,14 +40,12 @@ export function QuickPortfolio({ open, onClose }: { open: boolean; onClose: () =
         const target = event.target;
         const anchor = target instanceof Element ? target.closest<HTMLAnchorElement>('a[href^="#"]') : null;
         if (!anchor) return;
-        const section = dialog.current?.querySelector<HTMLElement>(anchor.hash);
-        if (!section) return;
+        if (!dialog.current) return;
         event.preventDefault();
-        section.scrollIntoView({ block: "start" });
-        section.querySelector<HTMLElement>("[tabindex]")?.focus({ preventScroll: true });
+        focusSection(dialog.current, anchor.hash.slice(1));
       }}>
         <div className="portfolio-toolbar">
-          <Link href="/portfolio" className="portfolio-page-link">Open full page <span aria-hidden="true">↗</span></Link>
+          <Link href={initialSection ? `/portfolio#${initialSection}` : "/portfolio"} className="portfolio-page-link">Open full page <span aria-hidden="true">↗</span></Link>
           <button type="button" className="close-button" onClick={onClose} autoFocus aria-label="Close quick portfolio">Back to village <span aria-hidden="true">✕</span></button>
         </div>
         <PortfolioContent inDialog />

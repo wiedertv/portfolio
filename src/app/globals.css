@@ -59,3 +59,7 @@ kbd { font: 10px monospace; color: var(--navy); }
   .page-note { flex-wrap: wrap; line-height: 1.5; }
   .mobile-note { display: block; }
 }
+
+.interaction-hint { position: absolute; bottom: 20px; inset-inline: 12px; display: flex; justify-content: center; pointer-events: none; }
+.interaction-hint > span { display: inline-flex; align-items: center; gap: 11px; padding: 10px 16px; background: var(--cream); color: var(--navy); border: 1px solid #c9bda9; border-radius: 4px; box-shadow: 3px 3px 0 #28394a30; font-size: 13px; }
+.interaction-hint kbd { padding: 4px 7px; border: 1px solid #9f917d; background: #eae4d7; font-size: 12px; }

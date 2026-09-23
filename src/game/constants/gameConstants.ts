@@ -12,12 +12,3 @@ export const COLORS = {
   cream: 0xf8efd9,
   brown: 0x795b47,
 } as const;
-
-export const LOCATIONS = [
-  { label: "Home", x: 430, y: 300, color: 0xb88669 },
-  { label: "Projects", x: 800, y: 260, color: 0x778997 },
-  { label: "Experience", x: 1170, y: 300, color: 0xa88e6b },
-  { label: "Skills", x: 430, y: 910, color: 0x7c977e },
-  { label: "Game Lab", x: 800, y: 960, color: 0x918498 },
-  { label: "Contact", x: 1170, y: 910, color: 0xb88b73 },
-] as const;

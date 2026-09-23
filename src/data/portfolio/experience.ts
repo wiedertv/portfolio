@@ -18,7 +18,7 @@ export const experiences: readonly Experience[] = [
     highlights: [
       "Built blockchain platforms spanning smart contracts, Node.js services and Next.js applications.",
       "Migrated an Ethereum-based platform to Polygon, drastically reducing transaction costs.",
-      "Optimized smart-contract execution by approximately 15–20%.",
+      "Optimized smart contracts, reducing computational consumption by approximately 15–20%.",
       "Built middleware connecting blockchain state with application databases and an Unreal Engine client.",
     ],
     stack: ["Next.js", "React", "NestJS", "Node.js", "Solidity", "Ethers.js", "Polygon", "Ethereum", "Unreal Engine"],

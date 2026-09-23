@@ -1,6 +1,11 @@
+import type { SectionId } from "@/types/portfolio";
+import type { NearbyLocation } from "@/game/types/world";
+
 type GameEventMap = {
   ready: undefined;
   inputEnabled: boolean;
+  "location:nearby": NearbyLocation | null;
+  "portfolio:open": { section: SectionId };
 };
 
 // Each mounted game gets its own bridge; this module has no browser or Phaser imports.

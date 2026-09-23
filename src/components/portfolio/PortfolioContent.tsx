@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { achievements, gameDevelopment, portfolioSections, profile, projects, skillCategories } from "@/data/portfolio";
 import type { SectionId } from "@/types/portfolio";
 import { ExperienceList } from "./ExperienceList";
+import { GameProjectCard } from "./GameProjectCard";
 import { ProjectCard } from "./ProjectCard";
 import { StackTags } from "./StackTags";
 
@@ -21,7 +22,6 @@ function Section({ id, title, inDialog, children }: { id: SectionId; title: stri
 export function PortfolioContent({ inDialog = false }: { inDialog?: boolean }) {
   const Heading = inDialog ? "h2" : "h1";
   const Subheading = inDialog ? "h4" : "h3";
-  const featuredProject = projects.find((project) => project.id === gameDevelopment.featuredProjectId)!;
   return (
     <div className="portfolio-content">
       <header className="portfolio-hero">
@@ -52,9 +52,9 @@ export function PortfolioContent({ inDialog = false }: { inDialog?: boolean }) {
               <div className="skill-category" key={category.name}><Subheading>{category.name}</Subheading><StackTags items={category.skills} /></div>
             ))}</div>
           </Section>
-          <Section id="game-development" title={gameDevelopment.heading} inDialog={inDialog}>
+          <Section id="game-lab" title={gameDevelopment.heading} inDialog={inDialog}>
             <div className="game-lab-copy">{gameDevelopment.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
-            <ProjectCard project={featuredProject} featured inDialog={inDialog} />
+            {gameDevelopment.projects.map((project) => <GameProjectCard key={project.id} project={project} inDialog={inDialog} />)}
           </Section>
           <Section id="achievements" title="Quest Board" inDialog={inDialog}>
             <p className="section-intro">Engineering achievements, earned in production.</p>
