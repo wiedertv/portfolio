@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { achievements, gameDevelopment, portfolioSections, profile, projects, skillCategories } from "@/data/portfolio";
+import { achievements, gameDevelopment, portfolioSections, profile, profileAvailability, projects, skillCategories } from "@/data/portfolio";
 import type { SectionId } from "@/types/portfolio";
 import { ExperienceList } from "./ExperienceList";
 import { GameProjectCard } from "./GameProjectCard";
@@ -29,7 +29,7 @@ export function PortfolioContent({ inDialog = false }: { inDialog?: boolean }) {
         <Heading id="portfolio-title">{profile.name}</Heading>
         <p className="portfolio-title">{profile.title}</p>
         <p className="portfolio-summary">{profile.summary}</p>
-        <div className="profile-details"><span>{profile.location}</span><span>{profile.workMode}</span></div>
+        <p className="profile-details">{profileAvailability.compact}</p>
       </header>
       <div className="portfolio-layout">
         <aside className="portfolio-sidebar">
@@ -62,12 +62,12 @@ export function PortfolioContent({ inDialog = false }: { inDialog?: boolean }) {
           </Section>
           <Section id="contact" title="Contact" inDialog={inDialog}>
             <div className="contact-card"><Subheading>{profile.contact.heading}</Subheading><p>{profile.contact.text}</p>
-              <dl><div><dt>Location</dt><dd>{profile.location}</dd></div><div><dt>Availability</dt><dd>{profile.workMode}</dd></div></dl>
+              <p className="contact-availability">Based in {profile.location}.<br />Open to {profile.workPreference} opportunities.<br />{profile.relocation}.</p>
             </div>
           </Section>
         </div>
       </div>
-      <footer className="portfolio-footer"><span>{profile.name} · {profile.title}</span><span>{profile.location} · {profile.workMode}</span></footer>
+      <footer className="portfolio-footer"><span>{profile.name} · {profile.title}</span><span>{profileAvailability.full}</span></footer>
     </div>
   );
 }

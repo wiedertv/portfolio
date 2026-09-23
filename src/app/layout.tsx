@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { ThemeSync } from "@/components/theme/ThemeSync";
+import { themeBootstrap } from "@/lib/theme";
 import "./globals.css";
+import "./theme.css";
 import "./portfolio.css";
 
 export const metadata: Metadata = {
@@ -8,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><a className="skip-link" href="#main-content">Skip to main content</a>{children}</body></html>;
+  return <html lang="en" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: themeBootstrap }} /></head><body><ThemeSync /><a className="skip-link" href="#main-content">Skip to main content</a>{children}</body></html>;
 }

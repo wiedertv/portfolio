@@ -47,3 +47,9 @@ Walk to Home, Projects, Experience, Skills, Game Lab, Contact, and Quest Board. 
 Quick Portfolio and `/portfolio` share `PortfolioContent`; neither requires a running game. Check 320px mobile scrolling and try Quick Portfolio with game initialization blocked. Verify navigation away from and back to the village creates only one canvas.
 
 The software Projects section currently contains Interactive Portfolio. Game Lab describes Saving Cobblestone as game design in pre-production, on hold, with completed design work and explicitly unimplemented gameplay. There is no public GDD or playable-game claim.
+
+## Interface themes
+
+Light/Dark changes only the React interface; the Phaser world's daytime palette stays independent. Semantic colors live in `src/app/theme.css`. A small inline script in the root layout resolves a saved `alirio-theme` preference or `prefers-color-scheme` before the body is painted. Without JavaScript, CSS follows the system preference.
+
+The selector is available in the header, Quick Portfolio, and `/portfolio`. Selection persists in localStorage and synchronizes across tabs. System changes are followed until an explicit preference is selected; clearing the stored preference restores system behavior. Blocked storage still allows changing the theme for the current visit. Theme listeners and selector observers clean up on unmount.

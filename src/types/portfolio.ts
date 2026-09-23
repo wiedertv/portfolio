@@ -2,7 +2,8 @@ export type Profile = {
   name: string;
   title: string;
   location: string;
-  workMode: string;
+  workPreference: string;
+  relocation: string;
   summary: string;
   about: { heading: string; paragraphs: readonly string[] };
   contact: { heading: string; text: string };

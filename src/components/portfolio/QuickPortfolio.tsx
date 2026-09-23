@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import type { SectionId } from "@/types/portfolio";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { PortfolioContent } from "./PortfolioContent";
 
 function focusSection(root: HTMLDialogElement, id: string) {
@@ -46,6 +47,7 @@ export function QuickPortfolio({ open, initialSection, onClose }: { open: boolea
       }}>
         <div className="portfolio-toolbar">
           <Link href={initialSection ? `/portfolio#${initialSection}` : "/portfolio"} className="portfolio-page-link">Open full page <span aria-hidden="true">↗</span></Link>
+          <ThemeToggle />
           <button type="button" className="close-button" onClick={onClose} autoFocus aria-label="Close quick portfolio">Back to village <span aria-hidden="true">✕</span></button>
         </div>
         <PortfolioContent inDialog />

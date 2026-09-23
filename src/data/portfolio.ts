@@ -1,6 +1,6 @@
 import type { PortfolioSection } from "@/types/portfolio";
 
-export { profile } from "./portfolio/profile";
+export { profile, profileAvailability } from "./portfolio/profile";
 export { experiences } from "./portfolio/experience";
 export { projects, projectStatusLabels } from "./portfolio/projects";
 export { gameDevelopment, gameStageLabels } from "./portfolio/gameDevelopment";

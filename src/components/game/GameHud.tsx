@@ -3,6 +3,8 @@
 import Link from "next/link";
 import type { SectionId } from "@/types/portfolio";
 import { useCallback, useState } from "react";
+import { profileAvailability } from "@/data/portfolio/profile";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { Game } from "@/components/game/Game";
 import { QuickPortfolio } from "@/components/portfolio/QuickPortfolio";
 
@@ -16,7 +18,8 @@ export function GameHud() {
           <span className="identity-mark" aria-hidden="true">a.</span>
           <span><span className="identity-name">Alirio Angel</span><span className="identity-role">Fullstack Engineer</span></span>
         </Link>
-        <button type="button" className="portfolio-button" onClick={() => setPortfolioRequest({})} aria-haspopup="dialog">Quick Portfolio <span aria-hidden="true">↗</span></button>
+        <div className="header-actions"><ThemeToggle /><button type="button" className="portfolio-button" onClick={() => setPortfolioRequest({})} aria-haspopup="dialog">Quick Portfolio <span aria-hidden="true">↗</span></button></div>
+        <p className="header-availability">{profileAvailability.compact}</p>
       </header>
       <main id="main-content">
         <div className="intro">

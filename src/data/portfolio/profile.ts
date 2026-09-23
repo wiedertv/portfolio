@@ -4,7 +4,8 @@ export const profile = {
   name: "Alirio Angel",
   title: "Fullstack Engineer",
   location: "Italy",
-  workMode: "Remote / CET",
+  workPreference: "Remote or Onsite",
+  relocation: "Open to relocation within the EU",
   summary: "6+ years building reliable, high-performance software with TypeScript, React and Node.js. Product engineering, frontend systems and backend architecture for data-intensive applications.",
   about: {
     heading: "Hi, I'm Alirio.",
@@ -17,7 +18,12 @@ export const profile = {
     ],
   },
   contact: {
-    heading: "Let's build something.",
+    heading: "LET'S BUILD SOMETHING.",
     text: "I'm interested in challenging engineering work involving TypeScript, React, Node.js, backend architecture, data-intensive applications and product engineering.",
   },
 } as const satisfies Profile;
+
+export const profileAvailability = {
+  compact: `${profile.location} · ${profile.workPreference} · Open to EU Relocation`,
+  full: `Based in ${profile.location} · Open to ${profile.workPreference} opportunities · ${profile.relocation}`,
+};
