@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./portfolio.css";
 
 export const metadata: Metadata = {
   title: "Alirio Angel — Fullstack Engineer",
-  description: "Explore Alirio Angel's portfolio: a cozy interactive village for fullstack engineering and game development.",
+  description: "Alirio Angel — Fullstack Engineer in Italy. 6+ years building scalable software with TypeScript, React and Node.js, spanning frontend systems and backend architecture.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

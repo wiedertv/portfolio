@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { portfolioSections } from "@/data/portfolio";
+import { PortfolioContent } from "./PortfolioContent";
 
 export function QuickPortfolio({ open, onClose }: { open: boolean; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -24,23 +25,22 @@ export function QuickPortfolio({ open, onClose }: { open: boolean; onClose: () =
     <dialog ref={dialog} className="portfolio-dialog" aria-labelledby="portfolio-title" onCancel={onClose} onClick={(event) => {
       if (event.target === event.currentTarget) onClose();
     }}>
-      <div className="portfolio-content">
-        <div className="flex items-start justify-between gap-6">
-          <div><p className="eyebrow">THE QUICK TOUR</p><h2 id="portfolio-title">A little about Alirio.</h2></div>
-          <button type="button" className="close-button" onClick={onClose} autoFocus aria-label="Close quick portfolio">✕</button>
+      <div className="portfolio-dialog-inner" onClick={(event) => {
+        // Keep section navigation inside the dialog without changing the underlying page's URL.
+        const target = event.target;
+        const anchor = target instanceof Element ? target.closest<HTMLAnchorElement>('a[href^="#"]') : null;
+        if (!anchor) return;
+        const section = dialog.current?.querySelector<HTMLElement>(anchor.hash);
+        if (!section) return;
+        event.preventDefault();
+        section.scrollIntoView({ block: "start" });
+        section.querySelector<HTMLElement>("[tabindex]")?.focus({ preventScroll: true });
+      }}>
+        <div className="portfolio-toolbar">
+          <Link href="/portfolio" className="portfolio-page-link">Open full page <span aria-hidden="true">↗</span></Link>
+          <button type="button" className="close-button" onClick={onClose} autoFocus aria-label="Close quick portfolio">Back to village <span aria-hidden="true">✕</span></button>
         </div>
-        <p className="panel-intro">Fullstack Engineer. This first prototype is the foundation; the full portfolio is on its way.</p>
-        <nav aria-label="Portfolio sections" className="section-links">
-          {portfolioSections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.title}</a>)}
-        </nav>
-        <div className="portfolio-sections">
-          {portfolioSections.map((section, index) => (
-            <section id={section.id} key={section.id}>
-              <span className="section-number" aria-hidden="true">0{index + 1}</span>
-              <div><h3>{section.title}</h3><p>{section.description}</p></div>
-            </section>
-          ))}
-        </div>
+        <PortfolioContent inDialog />
       </div>
     </dialog>
   );

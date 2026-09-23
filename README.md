@@ -1,6 +1,6 @@
 # Alirio Angel — Portfolio
 
-Milestone 1: a cozy outdoor portfolio prototype built with Next.js App Router, TypeScript, Tailwind CSS, and Phaser 3. All world graphics are temporary, procedural placeholders. No external art or fonts are fetched.
+A professional portfolio with a cozy outdoor prototype built with Next.js App Router, TypeScript, Tailwind CSS, and Phaser 3. All world graphics are temporary, procedural placeholders. No external art or fonts are fetched.
 
 ## Development
 
@@ -11,7 +11,7 @@ pnpm install
 pnpm dev
 ```
 
-Open http://localhost:3000. Click or tab into the game, then move with WASD or arrow keys. Tab leaves the game. Quick Portfolio opens a React dialog with placeholder sections. E is reserved for the next milestone; interiors and interactions are not implemented. On mobile, use Quick Portfolio; touch movement is not part of this milestone.
+Open http://localhost:3000. Click or tab into the game, then move with WASD or arrow keys. Tab leaves the game. Quick Portfolio opens a spacious React portfolio with professional experience, projects, skills, Game Lab, achievements, and contact positioning. `/portfolio` offers the same content as a standalone page without loading Phaser. E is reserved for the next milestone; interiors and interactions are not implemented. On mobile, use Quick Portfolio; touch movement is not part of this milestone.
 
 ```sh
 pnpm lint
@@ -24,7 +24,7 @@ pnpm start
 
 - `src/app`: server-rendered page, metadata, and global styles.
 - `src/components/game`: React HUD and game lifecycle. Phaser and its config are imported only inside an effect, never during SSR. A resize observer resizes the existing instance; unmount destroys it.
-- `src/components/portfolio` and `src/data`: native modal dialog and typed placeholder content.
+- `src/components/portfolio` and `src/data`: shared portfolio presentation, a native modal dialog, and typed professional content. `src/types/portfolio.ts` defines the content model; `src/data/portfolio/` contains profile/contact, experience, projects/Game Lab, skills, and achievements. Edit these files to update copy without touching the UI.
 - `src/game/config`, `scenes`, `entities`: Phaser configuration, boot/world scenes, and normalized Arcade Physics player movement.
 - `src/game/world`: replaceable procedural world renderer.
 - `src/game/constants`: world dimensions, palette, locations, and texture identifiers.
